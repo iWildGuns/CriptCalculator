@@ -1,8 +1,24 @@
+import { useEffect } from "react";
+import CriptoSearchForm from "./components/CryptoSearchForm";
+import { useCryptoStore } from "./store";
+
 function App() {
+  //
+  const fetchCryptos = useCryptoStore((state) => state.fetchCryptos);
+  //
+  useEffect(() => {
+    fetchCryptos();
+  }, []);
   return (
     <>
-      <div>
-        <h1 className=" w-2xl m-10 font-bold">Hola Mundo</h1>
+      <div className="container">
+        <h1 className="appTittle">
+          {" "}
+          Cotizador de <span>Cripto Monedas</span>
+        </h1>
+        <div className="content">
+          <CriptoSearchForm />
+        </div>
       </div>
     </>
   );
